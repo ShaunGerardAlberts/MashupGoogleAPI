@@ -1,0 +1,12 @@
+html, body {
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    padding: 0;
+  }
+  #form1 {
+    margin-top: 50px;
+  }
+  #map {
+    height: 70%;
+  }
