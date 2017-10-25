@@ -1,11 +1,13 @@
 var map;
 var markers = [];
+
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -26.715, lng: 137.064},
     zoom: 4
   });
  }
+
 function removeExistingMarkers() {
   for (let i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
@@ -13,7 +15,6 @@ function removeExistingMarkers() {
 }
 
  $(document).ready(function(){
-    // markers = [];
 
     $("#form1").submit(function(event){
       event.preventDefault();
@@ -40,4 +41,5 @@ function removeExistingMarkers() {
       })
       $("#store_postcode").val("");
     })
+    
   });

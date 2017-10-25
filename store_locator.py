@@ -5,29 +5,22 @@ import sys
 storeLocationsTable = etl.fromcsv("./resources/store_locations.csv")
 #print(storeLocationsTable)
 
-@route('/hello')
-def hello():
-    return "Hello"
-
 #http://localhost:8080/getlocation?postcode=5000
 @route('/getlocation')
 def get_location():
     setHeaders()
     postCode = request.query.postcode
-    selectedRow = etl.select(storeLocationsTable, "{Postcode} == '" + postCode + "'") 
+    selectedRow = etl.select(storeLocationsTable, "{Postcode} == '" + postCode + "'")
 
     #if 2 records are not returned it didn't find a result
     if (selectedRow.len() != 2):
         defaultPostCode = "2000"
         selectedRow = etl.select(storeLocationsTable, "{Postcode} == '" + defaultPostCode + "'") 
-
-    name = selectedRow[1][0]
-    lat = selectedRow[1][2]
-    lon = selectedRow[1][3]
+    
     storeData = {
-        "name": name,
-        "lat": lat,
-        "lon": lon
+        "name": selectedRow[1][0],
+        "lat": selectedRow[1][2],
+        "lon": selectedRow[1][3]
     }
     return storeData
 

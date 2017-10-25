@@ -18,13 +18,13 @@ if __name__ == "__main__":
 
     #create the tables using the supplied files
     locTable = createTableFromXML(xmlFile)
-    print(locTable)
+    # print(locTable)
     storesTable = createTableFromCSV(csvFile)
-    print(storesTable)
+    # print(storesTable)
 
     #join two tables
     locationStores = joinTables(locTable, storesTable, "Name")
-    print(locationStores)
+    # print(locationStores)
 
     #order table
     orderdColumns = etl.cut(locationStores, "Name", "Suburb", "Lat", "Lon", "ID", "State", "Postcode")
