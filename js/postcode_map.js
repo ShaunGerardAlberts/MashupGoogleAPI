@@ -37,7 +37,7 @@ function removeExistingMarkers() {
         markers.push(marker);
       })
       .fail(function(error) {
-        alert("An Error Occured");
+        alert("An Error Occured, Is the server running?");
       })
       $("#store_postcode").val("");
     })
